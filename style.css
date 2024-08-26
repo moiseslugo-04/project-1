@@ -35,8 +35,7 @@ h6 {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-
-  position: relative;
+  position: fixed;
   left: 0;
   top: 0;
   background-color: #2c3e50;
@@ -118,9 +117,11 @@ h6 {
 @media screen and (width >= 650px) {
   .header {
     border-radius: 0 0 12px 12px;
+    padding: 10px 0;
+    animation: header-movement both;
+    animation-timeline: scroll();
+    animation-range: 10px 100px;
   }
-}
-@container header (width >= 650px) {
   .header__nav label {
     display: none;
   }
@@ -132,6 +133,7 @@ h6 {
     flex-direction: row;
     height: auto;
     flex-shrink: 1;
+    background-color: transparent;
   }
   .nav__list .nav__list-item a {
     text-decoration: none;
@@ -146,6 +148,7 @@ h6 {
     width: 100%;
   }
 }
+
 /*Header Ends*/
 
 /*About Me Start*/
@@ -153,6 +156,7 @@ h6 {
   width: 100%;
   container-type: inline-size;
   container-name: About;
+  animation: appear 1s ease-out both;
 }
 
 .about__container {
@@ -289,6 +293,9 @@ h6 {
   background-position: center;
   background-size: cover;
   overflow: hidden;
+  animation: appear both;
+  animation-timeline: view();
+  animation-range: cover 5% cover 40%;
 }
 .project__gallery .project__gallery-item:hover {
   opacity: 0.75;
@@ -431,4 +438,23 @@ footer {
   align-items: center;
   background-color: #34495e;
   color: #f4f4f9;
+}
+
+/*Animations*/
+@keyframes header-movement {
+  from {
+    background-color: #2c3e50;
+  }
+  to {
+    background-color: #2c3e509c;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
